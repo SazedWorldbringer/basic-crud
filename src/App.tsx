@@ -1,7 +1,25 @@
+import { GoogleLogin } from "@react-oauth/google"
+
 function App() {
+  const responseMsg = (credentialResponse: any) => {
+    console.log(credentialResponse)
+  }
+
+  const errorMsg = () => {
+    console.log("Login failed")
+  }
 
   return (
-    <div className="text-5xl text-red-400 font-bold">Hello World</div>
+    <main>
+      <h2 className="text-3xl text-stone-800 m-5">
+        React Google OAuth
+      </h2>
+
+      <GoogleLogin
+        onSuccess={responseMsg}
+        onError={errorMsg}
+      />
+    </main>
   )
 }
 
