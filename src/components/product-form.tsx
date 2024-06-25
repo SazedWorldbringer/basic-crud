@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from './ui/button';
 import { Link, redirect } from 'react-router-dom';
 import { Input } from './ui/input';
