@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom"
 import actions from "../lib/actions"
 import { Product } from "../types"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardTitle } from "./ui/card"
 
 export default function ProductCard({ product }: { product: Product }) {
+  const navigate = useNavigate()
   const handleDelete = () => {
     try {
       actions
@@ -11,6 +13,7 @@ export default function ProductCard({ product }: { product: Product }) {
         .then(res => {
           console.log(res)
         })
+       navigate(0) 
     } catch (error) {
       console.log("Failed to delete product", error)
     }
