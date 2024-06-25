@@ -5,6 +5,8 @@ import React from "react"
 import HomePage, { homeLoader } from "./pages/home"
 import CreatePage from "./pages/create"
 import { createAction } from "./components/product-form"
+import EditPage from "./pages/edit"
+import { editAction, editLoader } from "./components/edit-form"
 
 const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
   const user = localStorage.getItem("user")
@@ -30,6 +32,12 @@ const router = createBrowserRouter([
         path: "/create",
         element: <CreatePage />,
         action: createAction
+      },
+      {
+        path: "/products/edit/:id",
+        element: <EditPage />,
+        loader: editLoader,
+        action: editAction,
       }
     ]
   },
