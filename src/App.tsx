@@ -2,10 +2,11 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import Layout from "./layout"
 import LoginPage from "./pages/login"
 import React from "react"
-import HomePage from "./pages/home"
+import HomePage, { homeLoader } from "./pages/home"
 import { Product } from "./types"
+import CreatePage from "./pages/create"
 
-let products: Product[] = [
+let placeholderProducts: Product[] = [
   {
     id: 1,
     name: 'laptop',
@@ -43,7 +44,12 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage products={products} />
+        element: <HomePage />,
+        loader: homeLoader,
+      },
+      {
+        path: "/create",
+        element: <CreatePage />
       }
     ]
   },
