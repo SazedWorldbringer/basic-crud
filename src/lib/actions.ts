@@ -7,6 +7,11 @@ const getAll = async () => {
   return request.then(res => res.data);
 }
 
+const get = async (id: string) => {
+  const request = axios.get(`${baseUrl}/${id}`);
+  return request.then(res => res.data);
+}
+
 const create = async (newObj: NewProduct) => {
   const request = axios.post(baseUrl, newObj);
   return request.then(res => res.data);
@@ -22,5 +27,5 @@ const update = async (id: string, newObj: NewProduct) => {
   return request.then(res => res.data);
 }
 
-export default { getAll, create, deleteEntry, update }
+export default { getAll, get, create, deleteEntry, update }
 
