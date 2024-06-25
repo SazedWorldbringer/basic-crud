@@ -1,25 +1,34 @@
-import { GoogleLogin } from "@react-oauth/google"
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
+import Layout from "./layout"
+import LoginPage from "./pages/login"
+import React from "react"
 
-function App() {
-  const responseMsg = (credentialResponse: any) => {
-    console.log(credentialResponse)
+const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
+  const user = localStorage.getItem("user")
+
+  if (!user) {
+    return <Navigate to="/login" />
   }
 
-  const errorMsg = () => {
-    console.log("Login failed")
-  }
+  return children
+}
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <ProtectedRoute><Layout /></ProtectedRoute>
+  },
+  {
+    path: "/login",
+    element: <LoginPage />
+  }
+])
+
+const App = () => {
   return (
-    <main>
-      <h2 className="text-3xl text-stone-800 m-5">
-        React Google OAuth
-      </h2>
-
-      <GoogleLogin
-        onSuccess={responseMsg}
-        onError={errorMsg}
-      />
-    </main>
+    <div>
+      <RouterProvider router={router} />
+    </div>
   )
 }
 
