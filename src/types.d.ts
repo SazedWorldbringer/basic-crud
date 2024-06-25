@@ -5,3 +5,8 @@ export type Product = {
   image: string
 }
 
+export type NewProduct = {
+  name: string
+  price: number
+  image?: string
+}
