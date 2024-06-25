@@ -1,9 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import { Gem } from "lucide-react";
-import { cn } from "../../lib/utils";
-import { buttonVariants } from "../ui/button";
+import { Button } from "../ui/button";
+import { googleLogout } from "@react-oauth/google";
 
 export default function Nav() {
+	const navigate = useNavigate()
+	const logout = () => {
+		googleLogout()
+		localStorage.removeItem("user")
+		navigate("/login")
+	}
+
 	return (
 		<div className="flex h-20 items-center justify-between py-6">
 			<Link to="/" className="items-center space-x-2 flex">
@@ -11,16 +18,13 @@ export default function Nav() {
 				<span className="font-bold inline-block">Constellations</span>
 			</Link>
 			<nav>
-				<Link
-					to="/login"
-					className={cn(
-						"px-4",
-						buttonVariants({ variant: "secondary" })
-					)
-					}
+				<Button
+					variant="secondary"
+					className="px-4"
+					onClick={logout}
 				>
-					Login
-				</Link>
+					Logout
+				</Button>
 			</nav>
 		</div >
 
