@@ -43,7 +43,7 @@ export default function EditForm() {
         >
           Cancel
         </Link>
-        <Button type="submit">Edit Invoice</Button>
+        <Button type="submit">Edit Product</Button>
       </div>
     </Form>
   );
