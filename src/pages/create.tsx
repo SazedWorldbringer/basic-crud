@@ -1,6 +1,6 @@
 import Form from "../components/product-form"
 
-const CreatePage = ({ handleSubmit, handleNameChange, handlePriceChange }: any) => {
+const CreatePage = () => {
   return (
     <div className="flex justify-center w-full">
       <Form />
